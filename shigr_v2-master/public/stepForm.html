@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Step Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="assets1/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="assets1/vendor/nouislider/nouislider.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="assets1/css/stepstyle.css">
+</head>
+<style>
+    .select {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+        gap: 1px;
+    }
+    
+    .select__item {
+        padding: 10px;
+        cursor: pointer;
+        font-family: "Heebo", sans-serif;
+        text-align: center;
+        border-radius: 3px;
+        background: #eeeeee;
+        transition: background 0.1s;
+    }
+    
+    .select__item--selected {
+        background: #009578;
+        color: #ffffff;
+    }
+</style>
+
+<body>
+
+    <div class="main">
+        <div class="container">
+            <form method="POST" id="stepform" class="stepform" name="stepform" action="#">
+                <div>
+                    <span class="step-no"><img src="assets1\img\logo-dark.png" alt=""></span>
+                    <h3>Personal info</h3>
+                    <fieldset>
+                        <h2>Personal information</h2>
+                        <p class="desc"></p>
+                        <div class="fieldset-content">
+                            <div class="form-row">
+                                <label class="form-label">Name</label>
+                                <div class="form-flex">
+                                    <div class="form-group">
+                                        <input type="text" name="full_name" required placeholder="Name" id="full_name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" required placeholder="Email Id" id="email" />
+                                <span class="text-input">Example  :<span>  Jeff@gmail.com</span></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="number" name="phone" required placeholder="Phone No" id="phone" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <h3>Pick Up Address & Drop Address</h3>
+                    <fieldset>
+                        <h2>Pick Up Address & Drop Address</h2>
+                        <p class="desc"></p>
+                        <div class="fieldset-content">
+                            <div class="form-row">
+                                <label class="form-label">Pickup Address</label>
+                                <div class="form-flex">
+                                    <div class="form-group">
+                                        <input type="text" name="pickup" minlength="2" placeholder="Pick up Address" required id="pickup" />
+                                        <span class="text-input"><b>Pickup Restricted to Ghaziabad and Noida</b></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="drop address" class="form-label">Drop Address</label>
+                                <input type="text" name="drop" placeholder="Drop Address *" required id="drop" />
+                            </div>
+                            <div class="form-group">
+                                <label for="article" class="form-label">Document/Merchandise Name of Article</label>
+                                <select name="language" class="custom-select" multiple>
+                                      <option value="Gift">Gift</option>
+                                      <option value="Documents">Documents</option>
+                                      <option value="Saleofgoods">Sale of goods</option>
+                                      <option value="Commercialsample">Commercial sample</option>
+                                      <option value="Returnedgoods">Returned goods</option>
+                                      <option value="Other" id="other" onclick="textfield();">Other</option>                                      
+                                    </select>
+                                    <label for="Other">Please Specify if Other</label>
+                                    <input type="text" name="other" id="other" placeholder="Specify Item If Other"> 
+                                <br>
+                                <!-- <input type="text" name="article" id="article" placeholder="Document/Merchandise Name of Article" /> --->
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <h3>Pickup Slot & Time</h3>
+                    <fieldset>
+                        <h2>Select Pickup Slot and Time</h2>
+                        <p class="desc"></p>
+                        <div class="fieldset-content">
+                            <div class="form-row">
+                                <label class="form-label">Pickup Date</label>
+                                <div class="form-flex">
+                                    <div class="form-group">
+                                        <input type="Date" name="date" minlength="2" placeholder="Pick Date" required id="txtDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="time" class="form-label">Pickup Time</label>
+                                <input type="time" name="time" placeholder="Pick Time *" required id="time" onkeyup="checkTimeValidation()" onchange="checkTimeValidation()" />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <h3>Payment Method</h3>
+                    <fieldset>
+                        <h2>Select Payment Method</h2>
+                        <p class="desc"></p>
+                        <div class="fieldset-content">
+                            <div class="form-row">
+                                <ul>
+                                    <li class="bg-white active"><label> Debit Card/ Credit Card 
+                                        <input type="radio" id="condition2" name="web_service"value="Card" checked></label></li>
+                                    <li class="bg-white"><label>Cash 
+                                        <input type="radio" name="web_service" value="Cash"></label></li>
+                                    <li class="bg-white"><label>UPI
+                                         <input type="radio" name="web_service" value="UPI"></label></li>
+                                    <li class="bg-white"><label>Net Banking 
+                                        <input type="radio" name="web_service" value="Net Banking"></label></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript" src="sheet.js"></script>
+
+
+    <script src="assets1/vendor/jquery/jquery.min.js"></script>
+    <script src="assets1/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="assets1/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="assets1/vendor/jquery-steps/jquery.steps.min.js"></script>
+    <script src="assets1/vendor/minimalist-picker/dobpicker.js"></script>
+    <script src="assets1/vendor/nouislider/nouislider.min.js"></script>
+    <script src="assets1/vendor/wnumb/wNumb.js"></script>
+    <script src="assets1/js/stepmain.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvnOAJWVkuqSoK4w0GP8ZPG2UeBFbSiKs&libraries=geometry,places&callback=initMap"></script>
+    <script>
+        $(document).ready(function() {
+            $('.conditional').conditionize();
+        });
+
+        function checkTimeValidation() {
+            var time = document.getElementById('time').value;
+            console.log("time : " + time);
+            if (time >= '20') {
+                alert("You could not booked slot after 8:00 PM");
+            }
+        }
+    </script>
+    <script>
+        var searchInput = 'pickup';
+
+        $(document).ready(function() {
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "IN",
+                }
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var near_place = autocomplete.getPlace();
+            });
+        });
+    </script>
+    <script>
+        var searchInput2 = 'drop';
+
+        $(document).ready(function() {
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput2)), {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "IN",
+
+                }
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var near_place = autocomplete.getPlace();
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            var dtToday = new Date();
+
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var minDate = year + '-' + month + '-' + day;
+
+            $('#txtDate').attr('min', minDate);
+        });
+    </script>
+    < <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzKEy7NcS3mfXj9bIaByF0I-NoEoRBumD3fHwgTGVTelIEXpJhn1gzDSZE4pqI7D6o/exec' const form = document.forms['stepform'] form.addEventListener('submit', e => { e.preventDefault() fetch(scriptURL, { method:
+        'POST', body: new FormData(form) }) .then(response => alert("Thanks for Placing order")) .catch(error => console.error('Error!', error.message)) })
+        </script>
+        <script>
+            class CustomSelect {
+                constructor(originalSelect) {
+                    this.originalSelect = originalSelect;
+                    this.customSelect = document.createElement("div");
+                    this.customSelect.classList.add("select");
+
+                    this.originalSelect.querySelectorAll("option").forEach((optionElement) => {
+                        const itemElement = document.createElement("div");
+
+                        itemElement.classList.add("select__item");
+                        itemElement.textContent = optionElement.textContent;
+                        this.customSelect.appendChild(itemElement);
+
+                        if (optionElement.selected) {
+                            this._select(itemElement);
+                        }
+
+                        itemElement.addEventListener("click", () => {
+                            if (
+                                this.originalSelect.multiple &&
+                                itemElement.classList.contains("select__item--selected")
+                            ) {
+                                this._deselect(itemElement);
+                            } else {
+                                this._select(itemElement);
+                            }
+                        });
+                    });
+
+                    this.originalSelect.insertAdjacentElement("afterend", this.customSelect);
+                    this.originalSelect.style.display = "none";
+                }
+
+                _select(itemElement) {
+                    const index = Array.from(this.customSelect.children).indexOf(itemElement);
+
+                    if (!this.originalSelect.multiple) {
+                        this.customSelect.querySelectorAll(".select__item").forEach((el) => {
+                            el.classList.remove("select__item--selected");
+                        });
+                    }
+
+                    this.originalSelect.querySelectorAll("option")[index].selected = true;
+                    itemElement.classList.add("select__item--selected");
+                }
+
+                _deselect(itemElement) {
+                    const index = Array.from(this.customSelect.children).indexOf(itemElement);
+
+                    this.originalSelect.querySelectorAll("option")[index].selected = false;
+                    itemElement.classList.remove("select__item--selected");
+                }
+            }
+
+            document.querySelectorAll(".custom-select").forEach((selectElement) => {
+                new CustomSelect(selectElement);
+            });
+        </script>
+        <script>
+            function textfield() {
+                document.getElementById("other").innerHTML = "hello";
+            }
+        </script>
+</body>
+
+</html>
