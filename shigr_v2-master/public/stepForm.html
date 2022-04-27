@@ -11,9 +11,11 @@
     <!-- Font Icon -->
     <link rel="stylesheet" href="assets1/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="assets1/vendor/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="./assets/css/new.css">
 
     <!-- Main css -->
     <link rel="stylesheet" href="assets1/css/stepstyle.css">
+    <script src="./stepform.js"></script>
 </head>
 <style>
     .select {
@@ -97,9 +99,9 @@
                                       <option value="Saleofgoods">Sale of goods</option>
                                       <option value="Commercialsample">Commercial sample</option>
                                       <option value="Returnedgoods">Returned goods</option>
-                                      <option value="Other" id="other" onclick="textfield();">Other</option>                                      
+                                      <option value="Other" id="other" onclick="trigger();">Other</option>                                      
                                     </select>
-                                    <label for="Other">Please Specify if Other</label>
+                                    <label for="Other" id="heading">Please Specify if Other</label>
                                     <input type="text" name="other" id="other" placeholder="Specify Item If Other"> 
                                 <br>
                                 <!-- <input type="text" name="article" id="article" placeholder="Document/Merchandise Name of Article" /> --->

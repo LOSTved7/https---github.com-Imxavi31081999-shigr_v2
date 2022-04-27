@@ -215,6 +215,9 @@ function closeINational() {
     document.getElementById("myDIVV").style.display = "none";
     document.getElementById("internationalForm").reset();
 }
+function trigger() {
+    document.getElementById("other").style.display ="block";
+}
 
 // document.getElementById("get-quote-first").addEventListener("click", myFunction);
 // document.getElementById("get-quote-second").addEventListener("click", myyFunction);
